@@ -36,6 +36,7 @@ const switchTab = (id) => {
     document.getElementById("liked").style.display = "none";
     document.getElementById("reported").style.display = "none";
 
+    /* Before going another page current page should clear */
     document.getElementById("liked").innerHTML = ``;
     document.getElementById("reported").innerHTML = ``;
   } else if (id === "liked") {
@@ -43,6 +44,7 @@ const switchTab = (id) => {
     document.getElementById("posts").style.display = "none";
     document.getElementById("reported").style.display = "none";
 
+    /* Before going another page current page should clear */
     document.getElementById("reported").innerHTML = ``;
     displayLikedPosts();
   } else {
@@ -50,6 +52,7 @@ const switchTab = (id) => {
     document.getElementById("posts").style.display = "none";
     document.getElementById("liked").style.display = "none";
 
+    /* Before going another page current page should clear */
     document.getElementById("liked").innerHTML = ``;
     displayReportedPosts();
   }
@@ -67,7 +70,7 @@ const createPost = (post) => {
                     href="https://github.com/ProgrammingHero1"
                     target="_blank"
                     class="post__avatar">
-                    <img src="${userImage}" alt="User Picture" />
+                    <img src="${userImage   /* User image */}" alt="User Picture" />
                   </a>
                   <a href="#" class="post__user">phero</a>
                 </div>
@@ -148,7 +151,6 @@ const showPosts = (posts) => {
 
 const displayLikedPosts = () => {
   const likedPosts = getLikedPosts();
-  console.log(likedPosts);
   likedPosts.forEach((post) => {
     const div = createPost(post);
     document.getElementById("liked").appendChild(div);
@@ -166,7 +168,6 @@ const displayReportedPosts = () => {
 const loadPosts = async () => {
   let data = await fetch('../data/posts.json');
   posts = await data.json();
-  console.log(posts);
   showPosts(posts);
 }
 
